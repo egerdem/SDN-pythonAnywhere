@@ -1,0 +1,16 @@
+{
+  "name": "room_waspaa",
+  "display_name": "WASPAA Room",
+  "parameters": {
+    "width": 6.0,
+    "depth": 7.0,
+    "height": 4.0,
+    "source x": 3.6,
+    "source y": 5.3,
+    "source z": 1.3,
+    "mic x": 1.2,
+    "mic y": 1.8,
+    "mic z": 2.4,
+    "absorption": 0.1
+  }
+} 

@@ -1,0 +1,16 @@
+{
+  "name": "room_journal",
+  "display_name": "Journal Room",
+  "parameters": {
+    "width": 3.2,
+    "depth": 4.0,
+    "height": 2.7,
+    "source x": 2.0,
+    "source y": 3.0,
+    "source z": 2.0,
+    "mic x": 1.0,
+    "mic y": 1.0,
+    "mic z": 1.5,
+    "absorption": 0.1
+  }
+} 

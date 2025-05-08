@@ -1,32 +1,5 @@
 .idea/
 __pycache__/
-*.pyc
-*.pkl
-*.json
-*.npy
 *.DS_Store
-*.h5
+*.pyc
 
-# Ignore image files
-*.jpeg
-*.jpg
-*.png
-*.gif
-
-# Ignore video files
-*.mov
-*.mp4
-*.wav
-# Ignore document files
-*.docx
-*.pdf
-
-# Ignore the latex folder
-latex/
-copy_of_treble_tsdk/
-tsdk-onboarding-notebook/
-results/
-experiments/
-audio/
-SDN-Simplest_Hybrid_HO-SDN/
-```

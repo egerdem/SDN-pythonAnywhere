@@ -1,0 +1,35 @@
+{
+  "method": "SDN",
+  "label": "SW",
+  "info": "c5",
+  "flags": {
+    "specular_source_injection": true,
+    "source_weighting": 5
+  },
+  "room_parameters": {
+    "width": 3.2,
+    "depth": 4,
+    "height": 2.7,
+    "absorption": 0.1
+  },
+  "duration": 1.0,
+  "fs": 44100,
+  "source": {
+    "position": [
+      2,
+      3.0,
+      2
+    ],
+    "label": "src_2.0_3.0_2.0"
+  },
+  "receivers": [
+    {
+      "position": [
+        1,
+        1,
+        1.5
+      ],
+      "experiment_id": "59c08bb0f6"
+    }
+  ]
+}

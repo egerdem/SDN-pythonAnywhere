@@ -1,0 +1,32 @@
+{
+  "method": "SDN",
+  "label": "original",
+  "info": "(c1)",
+  "flags": {},
+  "room_parameters": {
+    "width": 9,
+    "depth": 7,
+    "height": 4,
+    "absorption": 0.2
+  },
+  "duration": 1,
+  "fs": 44100,
+  "source": {
+    "position": [
+      4.5,
+      3.5,
+      2
+    ],
+    "label": "src_4.5_3.5_2.0"
+  },
+  "receivers": [
+    {
+      "position": [
+        2,
+        2,
+        1.5
+      ],
+      "experiment_id": "f040780985"
+    }
+  ]
+}
