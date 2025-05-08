@@ -50,10 +50,12 @@ class ExperimentVisualizer:
 
         # Load trumpet sound
         try:
-            self.trumpet_data, self.trumpet_fs = sf.read('trumpet_cr_Track34.wav')
-            print("Trumpet sound loaded successfully")
+            # Assuming your username is 'egeerdem' and files are in 'sdn_app' directory
+            trumpet_file_path = '/home/egeerdem/sdn_app/trumpet_cr_Track34.wav'
+            self.trumpet_data, self.trumpet_fs = sf.read(trumpet_file_path)
+            print(f"Trumpet sound loaded successfully from {trumpet_file_path}: shape={self.trumpet_data.shape if self.trumpet_data is not None else None}, fs={self.trumpet_fs}")
         except Exception as e:
-            print(f"Error loading trumpet sound: {str(e)}")
+            print(f"Error loading trumpet sound from {trumpet_file_path}: {str(e)}")
             self.trumpet_data = None
             self.trumpet_fs = None
 
@@ -71,10 +73,12 @@ class ExperimentVisualizer:
 
         # Load bongo sound
         try:
-            self.bongo_data, self.bongo_fs = sf.read('002_bongo_original_cr.wav')
-            print("Bongo sound loaded successfully")
+            # Assuming your username is 'egeerdem' and files are in 'sdn_app' directory
+            bongo_file_path = '/home/egeerdem/sdn_app/002_bongo_original_cr.wav'
+            self.bongo_data, self.bongo_fs = sf.read(bongo_file_path)
+            print(f"Bongo sound loaded successfully from {bongo_file_path}: shape={self.bongo_data.shape if self.bongo_data is not None else None}, fs={self.bongo_fs}")
         except Exception as e:
-            print(f"Error loading bongo sound: {str(e)}")
+            print(f"Error loading bongo sound from {bongo_file_path}: {str(e)}")
             self.bongo_data = None
             self.bongo_fs = None
 
@@ -2196,20 +2200,23 @@ class ExperimentVisualizer:
             return self.bongo_convolution_cache[cache_key]
 
         print(f"Generating convolved audio for experiment {experiment_id}...")
+        print(f"RIR shape: {rir.shape}, RIR dtype: {rir.dtype}, RIR min: {np.min(rir)}, RIR max: {np.max(rir)}, FS: {fs}") # Log RIR info
+        print(f"Bongo data shape: {self.bongo_data.shape}, Bongo FS: {self.bongo_fs}") # Log Bongo info
+
         start_time = time.time()
 
         try:
             # Resample if needed
-            if fs != self.bongo_fs:
-                # Simple resampling by interpolation (not ideal but simple)
-                # For production, use proper resampling library like librosa
-                rir_resampled = np.interp(
-                    np.linspace(0, len(rir) - 1, int(len(rir) * self.bongo_fs / fs)),
-                    np.arange(len(rir)),
-                    rir
-                )
-                rir = rir_resampled
-                fs = self.bongo_fs
+            # if fs != self.bongo_fs:
+            #     # Simple resampling by interpolation (not ideal but simple)
+            #     # For production, use proper resampling library like librosa
+            #     rir_resampled = np.interp(
+            #         np.linspace(0, len(rir) - 1, int(len(rir) * self.bongo_fs / fs)),
+            #         np.arange(len(rir)),
+            #         rir
+            #     )
+            #     rir = rir_resampled
+            #     fs = self.bongo_fs
 
             # Normalize RIR
             rir_normalized = rir / np.max(np.abs(rir)) * 0.8
@@ -2305,20 +2312,23 @@ class ExperimentVisualizer:
             return self.trumpet_convolution_cache[cache_key]
 
         print(f"Generating trumpet convolved audio for experiment {experiment_id}...")
+        print(f"RIR shape: {rir.shape}, RIR dtype: {rir.dtype}, RIR min: {np.min(rir)}, RIR max: {np.max(rir)}, FS: {fs}") # Log RIR info
+        print(f"Trumpet data shape: {self.trumpet_data.shape}, Trumpet FS: {self.trumpet_fs}") # Log Trumpet info
+
         start_time = time.time()
 
         try:
             # Resample if needed
-            if fs != self.trumpet_fs:
-                # Simple resampling by interpolation (not ideal but simple)
-                # For production, use proper resampling library like librosa
-                rir_resampled = np.interp(
-                    np.linspace(0, len(rir) - 1, int(len(rir) * self.trumpet_fs / fs)),
-                    np.arange(len(rir)),
-                    rir
-                )
-                rir = rir_resampled
-                fs = self.trumpet_fs
+            # if fs != self.trumpet_fs:
+            #     # Simple resampling by interpolation (not ideal but simple)
+            #     # For production, use proper resampling library like librosa
+            #     rir_resampled = np.interp(
+            #         np.linspace(0, len(rir) - 1, int(len(rir) * self.trumpet_fs / fs)),
+            #         np.arange(len(rir)),
+            #         rir
+            #     )
+            #     rir = rir_resampled
+            #     fs = self.trumpet_fs
 
             # Normalize RIR
             rir_normalized = rir / np.max(np.abs(rir)) * 0.8
