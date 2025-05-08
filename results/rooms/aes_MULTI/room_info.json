@@ -1,0 +1,15 @@
+{
+  "name": "aes_quartergrid",
+  "display_name": "aes_quartergrid",
+  "parameters": {
+    "width": 9.0,
+    "depth": 7.0,
+    "height": 4.0,
+    "source x": 4.5,
+    "source y": 6,
+    "source z": 2,
+    "mic x": 4,
+    "mic y": 3,
+    "mic z": 1.5
+  }
+}

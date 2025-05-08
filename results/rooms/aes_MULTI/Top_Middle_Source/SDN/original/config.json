@@ -1,0 +1,289 @@
+{
+  "method": "SDN",
+  "label": "orig",
+  "info": "(c1)",
+  "flags": {},
+  "position_id": "Top_Middle_Source_to_mic_16",
+  "room_parameters": {
+    "width": 9,
+    "depth": 7,
+    "height": 4,
+    "source x": 4.5,
+    "source y": 6.0,
+    "source z": 2,
+    "mic x": 4.2,
+    "mic y": 3.2,
+    "mic z": 1.5,
+    "absorption": 0.2,
+    "room_name": "aes_quartergrid_new",
+    "reflection": 0.8944271909999159
+  },
+  "duration": 1.0,
+  "fs": 44100,
+  "source": {
+    "position": [
+      4.5,
+      6.0,
+      2
+    ],
+    "label": "Top_Middle_Source"
+  },
+  "receivers": [
+    {
+      "position": [
+        0.5,
+        0.5,
+        1.5
+      ],
+      "experiment_id": "01206781bc"
+    },
+    {
+      "position": [
+        1.6666666666666667,
+        0.5,
+        1.5
+      ],
+      "experiment_id": "14c00cbecd"
+    },
+    {
+      "position": [
+        2.8333333333333335,
+        0.5,
+        1.5
+      ],
+      "experiment_id": "96dfd86e85"
+    },
+    {
+      "position": [
+        4.0,
+        0.5,
+        1.5
+      ],
+      "experiment_id": "9fb957d43d"
+    },
+    {
+      "position": [
+        0.5,
+        1.3333333333333335,
+        1.5
+      ],
+      "experiment_id": "a53465a0fc"
+    },
+    {
+      "position": [
+        1.6666666666666667,
+        1.3333333333333335,
+        1.5
+      ],
+      "experiment_id": "5debf24e00"
+    },
+    {
+      "position": [
+        2.8333333333333335,
+        1.3333333333333335,
+        1.5
+      ],
+      "experiment_id": "855eb5b134"
+    },
+    {
+      "position": [
+        4.0,
+        1.3333333333333335,
+        1.5
+      ],
+      "experiment_id": "6024e818aa"
+    },
+    {
+      "position": [
+        0.5,
+        2.166666666666667,
+        1.5
+      ],
+      "experiment_id": "4a4d042041"
+    },
+    {
+      "position": [
+        1.6666666666666667,
+        2.166666666666667,
+        1.5
+      ],
+      "experiment_id": "0087e26750"
+    },
+    {
+      "position": [
+        2.8333333333333335,
+        2.166666666666667,
+        1.5
+      ],
+      "experiment_id": "a2be3b2d13"
+    },
+    {
+      "position": [
+        4.0,
+        2.166666666666667,
+        1.5
+      ],
+      "experiment_id": "562f1dcdb3"
+    },
+    {
+      "position": [
+        0.5,
+        3.0,
+        1.5
+      ],
+      "experiment_id": "c42d5c0c8a"
+    },
+    {
+      "position": [
+        1.6666666666666667,
+        3.0,
+        1.5
+      ],
+      "experiment_id": "cecfffa9d8"
+    },
+    {
+      "position": [
+        2.8333333333333335,
+        3.0,
+        1.5
+      ],
+      "experiment_id": "a638ee62a9"
+    },
+    {
+      "position": [
+        4.0,
+        3.0,
+        1.5
+      ],
+      "experiment_id": "ae42994014"
+    },
+    {
+      "position": [
+        0.5,
+        0.5,
+        1.5
+      ],
+      "experiment_id": "fbbb508ac0"
+    },
+    {
+      "position": [
+        1.7333333333333334,
+        0.5,
+        1.5
+      ],
+      "experiment_id": "a3dea45f46"
+    },
+    {
+      "position": [
+        2.966666666666667,
+        0.5,
+        1.5
+      ],
+      "experiment_id": "ddcbb76d02"
+    },
+    {
+      "position": [
+        4.2,
+        0.5,
+        1.5
+      ],
+      "experiment_id": "1ce78af013"
+    },
+    {
+      "position": [
+        0.5,
+        1.4,
+        1.5
+      ],
+      "experiment_id": "e972b3712d"
+    },
+    {
+      "position": [
+        1.7333333333333334,
+        1.4,
+        1.5
+      ],
+      "experiment_id": "f21d937d10"
+    },
+    {
+      "position": [
+        2.966666666666667,
+        1.4,
+        1.5
+      ],
+      "experiment_id": "a9d98295c0"
+    },
+    {
+      "position": [
+        4.2,
+        1.4,
+        1.5
+      ],
+      "experiment_id": "0c79fa23e7"
+    },
+    {
+      "position": [
+        0.5,
+        2.3,
+        1.5
+      ],
+      "experiment_id": "ea9ca403a3"
+    },
+    {
+      "position": [
+        1.7333333333333334,
+        2.3,
+        1.5
+      ],
+      "experiment_id": "37e01bd37d"
+    },
+    {
+      "position": [
+        2.966666666666667,
+        2.3,
+        1.5
+      ],
+      "experiment_id": "13bdf6c03b"
+    },
+    {
+      "position": [
+        4.2,
+        2.3,
+        1.5
+      ],
+      "experiment_id": "c87b1bc3c7"
+    },
+    {
+      "position": [
+        0.5,
+        3.2,
+        1.5
+      ],
+      "experiment_id": "aed096903c"
+    },
+    {
+      "position": [
+        1.7333333333333334,
+        3.2,
+        1.5
+      ],
+      "experiment_id": "57d15b8ae0"
+    },
+    {
+      "position": [
+        2.966666666666667,
+        3.2,
+        1.5
+      ],
+      "experiment_id": "ac76b18885"
+    },
+    {
+      "position": [
+        4.2,
+        3.2,
+        1.5
+      ],
+      "experiment_id": "e1750502f2"
+    }
+  ]
+}

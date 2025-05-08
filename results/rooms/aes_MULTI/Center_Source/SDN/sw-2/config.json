@@ -1,0 +1,164 @@
+{
+  "method": "SDN",
+  "label": "SW",
+  "info": "c-2",
+  "flags": {
+    "specular_source_injection": true,
+    "source_weighting": -2
+  },
+  "position_id": "Center_Source_to_mic_16",
+  "room_parameters": {
+    "width": 9,
+    "depth": 7,
+    "height": 4,
+    "source x": 4.5,
+    "source y": 3.5,
+    "source z": 2,
+    "mic x": 4.2,
+    "mic y": 3.2,
+    "mic z": 1.5,
+    "absorption": 0.2,
+    "room_name": "aes_quartergrid_new",
+    "reflection": 0.8944271909999159
+  },
+  "duration": 1.0,
+  "fs": 44100,
+  "source": {
+    "position": [
+      4.5,
+      3.5,
+      2
+    ],
+    "label": "Center_Source"
+  },
+  "receivers": [
+    {
+      "position": [
+        0.5,
+        0.5,
+        1.5
+      ],
+      "experiment_id": "3c3ed5d1cc"
+    },
+    {
+      "position": [
+        1.7333333333333334,
+        0.5,
+        1.5
+      ],
+      "experiment_id": "b5071582ee"
+    },
+    {
+      "position": [
+        2.966666666666667,
+        0.5,
+        1.5
+      ],
+      "experiment_id": "a6e42c40b9"
+    },
+    {
+      "position": [
+        4.2,
+        0.5,
+        1.5
+      ],
+      "experiment_id": "143d561ebb"
+    },
+    {
+      "position": [
+        0.5,
+        1.4,
+        1.5
+      ],
+      "experiment_id": "aadf2748d8"
+    },
+    {
+      "position": [
+        1.7333333333333334,
+        1.4,
+        1.5
+      ],
+      "experiment_id": "8478330d2f"
+    },
+    {
+      "position": [
+        2.966666666666667,
+        1.4,
+        1.5
+      ],
+      "experiment_id": "683103bb2d"
+    },
+    {
+      "position": [
+        4.2,
+        1.4,
+        1.5
+      ],
+      "experiment_id": "224c5532b5"
+    },
+    {
+      "position": [
+        0.5,
+        2.3,
+        1.5
+      ],
+      "experiment_id": "df3162a696"
+    },
+    {
+      "position": [
+        1.7333333333333334,
+        2.3,
+        1.5
+      ],
+      "experiment_id": "d746f4f731"
+    },
+    {
+      "position": [
+        2.966666666666667,
+        2.3,
+        1.5
+      ],
+      "experiment_id": "9b4101bcd1"
+    },
+    {
+      "position": [
+        4.2,
+        2.3,
+        1.5
+      ],
+      "experiment_id": "617e15151e"
+    },
+    {
+      "position": [
+        0.5,
+        3.2,
+        1.5
+      ],
+      "experiment_id": "01b4491861"
+    },
+    {
+      "position": [
+        1.7333333333333334,
+        3.2,
+        1.5
+      ],
+      "experiment_id": "bad39f12e6"
+    },
+    {
+      "position": [
+        2.966666666666667,
+        3.2,
+        1.5
+      ],
+      "experiment_id": "c000858693"
+    },
+    {
+      "position": [
+        4.2,
+        3.2,
+        1.5
+      ],
+      "experiment_id": "157b5a1cac"
+    }
+  ]
+}

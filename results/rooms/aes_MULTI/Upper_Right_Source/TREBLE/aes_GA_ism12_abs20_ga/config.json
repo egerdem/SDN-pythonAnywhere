@@ -1,0 +1,220 @@
+{
+  "method": "TRE",
+  "label": "GA ISM12",
+  "info": "20% Absorption",
+  "fs": 44100,
+  "duration": 1,
+  "room_parameters": {
+    "width": 9.0,
+    "depth": 7.0,
+    "height": 4.0,
+    "source x": 8.5,
+    "source y": 6,
+    "source z": 2,
+    "mic x": 4,
+    "mic y": 2.166666666666667,
+    "mic z": 1.5
+  },
+  "source": {
+    "position": [
+      8.5,
+      6,
+      2
+    ],
+    "label": "Upper_Right_Source"
+  },
+  "receiver": {
+    "position": [
+      4,
+      2.166666666666667,
+      1.5
+    ],
+    "label": "mono_mic_11",
+    "id": "32ac389b-0977-4ee5-a4d0-36c785d72027",
+    "experiment_id": "treble_Upper_Right_Source_mono_mic_11_32ac389b"
+  },
+  "treble_settings": {
+    "simulation_type": "GA",
+    "simulation_settings": {
+      "speedOfSound": 343,
+      "gaSettings": {
+        "numberOfRays": 5000,
+        "ISMOrder": 12,
+        "isAirAbsorptionActive": false,
+        "ISMRayCount": 50000,
+        "gaSolverType": "IsmPressureRayRadiosity"
+      },
+      "dgSettings": {
+        "polynomialOrder": 4,
+        "disableBcOptimizations": null,
+        "dumpRawIrs": null,
+        "skipPostprocessing": null
+      }
+    },
+    "crossover_frequency": 250,
+    "simulation_id": "462dd315-9555-4926-8d75-8c6b30747db5",
+    "original_fs": 32000
+  },
+  "receivers": [
+    {
+      "position": [
+        4,
+        2.166666666666667,
+        1.5
+      ],
+      "label": "mono_mic_11",
+      "id": "32ac389b-0977-4ee5-a4d0-36c785d72027",
+      "experiment_id": "treble_Upper_Right_Source_mono_mic_11_32ac389b"
+    },
+    {
+      "position": [
+        1.6666666666666667,
+        1.3333333333333335,
+        1.5
+      ],
+      "label": "mono_mic_5",
+      "id": "4b90ffff-6e32-4fd2-a5b4-719e76386bdf",
+      "experiment_id": "treble_Upper_Right_Source_mono_mic_5_4b90ffff"
+    },
+    {
+      "position": [
+        1.6666666666666667,
+        2.166666666666667,
+        1.5
+      ],
+      "label": "mono_mic_9",
+      "id": "85336b24-6f1d-4dbb-993f-96b928f13f4f",
+      "experiment_id": "treble_Upper_Right_Source_mono_mic_9_85336b24"
+    },
+    {
+      "position": [
+        2.8333333333333335,
+        2.166666666666667,
+        1.5
+      ],
+      "label": "mono_mic_10",
+      "id": "8a0d0f23-7ee2-408c-9590-4cc2649fd78a",
+      "experiment_id": "treble_Upper_Right_Source_mono_mic_10_8a0d0f23"
+    },
+    {
+      "position": [
+        4,
+        3,
+        1.5
+      ],
+      "label": "mono_mic_15",
+      "id": "8be0a1ea-c320-4bd2-9a6e-9f618bc946b8",
+      "experiment_id": "treble_Upper_Right_Source_mono_mic_15_8be0a1ea"
+    },
+    {
+      "position": [
+        4,
+        1.3333333333333335,
+        1.5
+      ],
+      "label": "mono_mic_7",
+      "id": "9b99fa1e-1892-4ab8-ac08-322aea947155",
+      "experiment_id": "treble_Upper_Right_Source_mono_mic_7_9b99fa1e"
+    },
+    {
+      "position": [
+        2.8333333333333335,
+        1.3333333333333335,
+        1.5
+      ],
+      "label": "mono_mic_6",
+      "id": "9d789294-9464-45ad-906f-b2bf512a39a9",
+      "experiment_id": "treble_Upper_Right_Source_mono_mic_6_9d789294"
+    },
+    {
+      "position": [
+        0.5,
+        1.3333333333333335,
+        1.5
+      ],
+      "label": "mono_mic_4",
+      "id": "bbe980bc-1b4b-4be3-b94c-8f5c468700de",
+      "experiment_id": "treble_Upper_Right_Source_mono_mic_4_bbe980bc"
+    },
+    {
+      "position": [
+        0.5,
+        0.5,
+        1.5
+      ],
+      "label": "mono_mic_0",
+      "id": "be21130b-46d1-4c63-8374-e53f4dce11e9",
+      "experiment_id": "treble_Upper_Right_Source_mono_mic_0_be21130b"
+    },
+    {
+      "position": [
+        2.8333333333333335,
+        3,
+        1.5
+      ],
+      "label": "mono_mic_14",
+      "id": "bf63c6c1-9a96-49a4-920d-00f12c85455d",
+      "experiment_id": "treble_Upper_Right_Source_mono_mic_14_bf63c6c1"
+    },
+    {
+      "position": [
+        4,
+        0.5,
+        1.5
+      ],
+      "label": "mono_mic_3",
+      "id": "ded7ed9e-88c5-4872-8d59-d34ced3506e1",
+      "experiment_id": "treble_Upper_Right_Source_mono_mic_3_ded7ed9e"
+    },
+    {
+      "position": [
+        0.5,
+        3,
+        1.5
+      ],
+      "label": "mono_mic_12",
+      "id": "f09624df-5eb6-446f-aa21-47bffdebe824",
+      "experiment_id": "treble_Upper_Right_Source_mono_mic_12_f09624df"
+    },
+    {
+      "position": [
+        2.8333333333333335,
+        0.5,
+        1.5
+      ],
+      "label": "mono_mic_2",
+      "id": "f20ed0c7-2908-43f9-a853-4cc925468444",
+      "experiment_id": "treble_Upper_Right_Source_mono_mic_2_f20ed0c7"
+    },
+    {
+      "position": [
+        0.5,
+        2.166666666666667,
+        1.5
+      ],
+      "label": "mono_mic_8",
+      "id": "f88997f0-ab9a-44e6-8c4c-ffda6f625553",
+      "experiment_id": "treble_Upper_Right_Source_mono_mic_8_f88997f0"
+    },
+    {
+      "position": [
+        1.6666666666666667,
+        3,
+        1.5
+      ],
+      "label": "mono_mic_13",
+      "id": "f9c77b3e-7473-4759-87ff-a25b86bf2e93",
+      "experiment_id": "treble_Upper_Right_Source_mono_mic_13_f9c77b3e"
+    },
+    {
+      "position": [
+        1.6666666666666667,
+        0.5,
+        1.5
+      ],
+      "label": "mono_mic_1",
+      "id": "ff9c7781-6f1c-4e26-9d96-a9e32e2fae83",
+      "experiment_id": "treble_Upper_Right_Source_mono_mic_1_ff9c7781"
+    }
+  ]
+}
