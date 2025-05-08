@@ -1,5 +1,5 @@
 import dash
-from dash import dcc, html, callback, Input, Output, State, dash_table
+from dash import dcc, html, Input, Output, State, dash_table
 import plotly.graph_objects as go
 import numpy as np
 from sdn_experiment_manager_pythonANY import Room
@@ -2069,8 +2069,8 @@ class ExperimentVisualizer:
                     fig.update_yaxes(range=[-10, 2])
 
                 # Set y-axis ranges
-                # if fig == ned_fig_monitor and (time_range == 0.05 or time_range == '0.05'):
-                #    fig.update_xaxes(range=[0, 0.2])
+                elif fig == ned_fig_monitor and (time_range == 0.05 or time_range == '0.05'):
+                    fig.update_yaxes(range=[0, 0.6])
 
             # Update plot layouts for laptop view
             for fig, title in [(rir_fig_laptop, "Room Impulse Response"),
@@ -2096,6 +2096,9 @@ class ExperimentVisualizer:
                     a = 4
                 elif fig == edc_fig_laptop and (time_range == 0.05 or time_range == '0.05'):
                     fig.update_yaxes(range=[-10, 2])
+
+                elif fig == ned_fig_laptop and (time_range == 0.05 or time_range == '0.05'):
+                    fig.update_yaxes(range=[0, 0.6])
 
             # Add unified legend for all plots
             legend_config = dict(

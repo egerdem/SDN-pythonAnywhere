@@ -227,36 +227,35 @@ class SDNExperiment:
             self.ensure_metrics_calculated()
         return self.metrics.get('rt60', None)
 
-    
     def get_label(self):
         """Generate a descriptive label for the experiment."""
         method = self.config.get('method')
-        
+
         if 'label' in self.config and self.config['label']:
             label = f"{self.config['label']}"
         else:
             label = f""
-            
+
         if 'info' in self.config and self.config['info']:
-            label += f": {self.config['info']}"
-            
+            label += f" {self.config['info']}"
+
         # Add method-specific details
         if method == 'ISM':
             if 'max_order' in self.config:
-                label += f"PRA order={self.config['max_order']}"
+                label += f" {self.config['max_order']}"
         elif method == 'SDN':
             # Add SDN-specific flags that affect the simulation
             if 'flags' in self.config:
                 flags = self.config['flags']
-                if flags.get('source_weighting'):
-                    label += f" {flags['source_weighting']}"
-                if flags.get('specular_source_injection'):
-                    label += " specular"
+                # if flags.get('source_weighting'):
+                #     label += f" {flags['source_weighting']}"
+                # if flags.get('specular_source_injection'):
+                #     label += " specular" #commented out
                 if 'source_pressure_injection_coeff' in flags:
                     label += f" src constant coef={flags['source_pressure_injection_coeff']}"
                 if 'scattering_matrix_update_coef' in flags:
                     label += f" scat={flags['scattering_matrix_update_coef']}"
-        label_for_legend = f"{method}, {label}" # complete label
+        label_for_legend = f"{method}, {label}"  # complete label
         # return label and label_for_legend as a single dictionary
         labels = {"label": label, "label_for_legend": label_for_legend}
         return labels
@@ -789,85 +788,3 @@ class ExperimentLoaderManager:
         for project in self.projects.values():
             experiments.extend(list(project.experiments.values()))
         return experiments
-
-
-
-# Example usage in main:
-if __name__ == "__main__":
-
-    results_dir = 'results'
-    IS_SINGULAR = False  # Set to False for batch processing
-    IS_BATCH = True  # Set to True for batch processing
-
-    # Display available projects for both modes
-    singular_category, singular_projects = ExperimentLoaderManager.get_available_projects(results_dir, mode='singular')
-    ExperimentLoaderManager.print_projects(singular_category, singular_projects, "Available singular projects:")
-    
-    batch_category, batch_projects = ExperimentLoaderManager.get_available_projects(results_dir, mode='batch')
-    ExperimentLoaderManager.print_projects(batch_category, batch_projects, "Available batch projects:")
-
-    if IS_SINGULAR:
-        # Example 1: Load all singular experiments
-        singular_manager = ExperimentLoaderManager(results_dir=results_dir, is_batch_manager=False, 
-                                                  )
-        
-        # Example 2: Load a single specific singular experiment folder
-        # singular_manager = ExperimentLoaderManager(results_dir=results_dir, is_batch_manager=False, 
-        #                                           project_names="waspaa_rr", 
-        #                                           )
-        
-        # Example 3: Load multiple specific singular experiment folders
-        # singular_manager = ExperimentLoaderManager(results_dir=results_dir, is_batch_manager=False, 
-        #                                           project_names=["aes_quartergrid", "journal_experiment1"],
-        #                                           )
-
-        from sdn_experiment_visualizer import ExperimentVisualizer
-        single_visualizer = ExperimentVisualizer(singular_manager)
-        single_visualizer.show(port=1991)
-
-        import sdn_experiment_visualizer as sev
-        import importlib
-        importlib.reload(sev)
-        single_visualizer = sev.ExperimentVisualizer(singular_manager)
-        single_visualizer.show(port=1991)
-
-
-    elif IS_BATCH: # Batch processing
-
-
-        # Example 3: Load multiple specific batch projects
-        #get list of categorized projects
-        aes_projects = batch_category.get('aes', [])
-        waspaa_projects = batch_category.get('waspaa', [])
-        journal_projects = batch_category.get('journal', [])
-
-        multiple_projects = False  # Set to True to select specific projects
-        if multiple_projects:
-            selected_projects = [batch_projects[0], batch_projects[1], batch_projects[3]]
-            print("selected projects: ", selected_projects)
-            batch_manager = ExperimentLoaderManager(results_dir=results_dir, is_batch_manager=True, project_names=selected_projects)
-
-        else:
-            # Example 1: Load all batch projects
-            # batch_manager = ExperimentLoaderManager(results_dir=results_dir, is_batch_manager=True)
-
-            # Example 2: Load a single specific batch project
-            batch_manager = ExperimentLoaderManager(results_dir=results_dir, is_batch_manager=True,
-                                                    project_names="aes_quartergrid_new")
-
-        from sdn_experiment_visualizer import ExperimentVisualizer
-        batch_visualizer = ExperimentVisualizer(batch_manager)
-        # generate random 4 digit with python random
-        import random
-        port_no = random.randint(1000, 9999)
-        batch_visualizer.show(port=port_no)
-        #
-        # # # # import analysis as an
-        # import importlib
-        # # importlib.reload(an)
-        # import sdn_experiment_visualizer as sev
-        # importlib.reload(sev)
-        # import random
-        # port_no = random.randint(1000, 9999)
-        # batch_visualizer = sev.ExperimentVisualizer(batch_manager)
-        # batch_visualizer.show(port=port_no)
