@@ -324,7 +324,7 @@ class SDNExperiment:
 class ExperimentLoaderManager:
     """Class to manage loading and accessing acoustic simulation experiments from storage."""
     
-    def __init__(self, results_dir='results', is_batch_manager=False, project_names=None, disable_unified_rooms=True, skip_metrics=False):
+    def __init__(self, results_dir='results', is_batch_manager=False, project_names=None, disable_unified_rooms=True, skip_metrics=False, project_source_filters=None):
         #note: skip_metrics is not fully correct yet. due to table retrieval error. only use it if you dont need table error ui.
         """
         Initialize the experiment manager.
@@ -340,6 +340,11 @@ class ExperimentLoaderManager:
                 For batch_manager=False, these are folder names in 'results/room_singulars/'
             disable_unified_rooms (bool): If True, only create individual rooms for singular mode 
                                          (saves memory by not duplicating experiments in unified rooms)
+            skip_metrics (bool): If True, skip calculating metrics for experiments.
+            project_source_filters (dict, optional): A dictionary to filter sources for specific projects.
+                                                  Example: {'aes_MULTI': ['Center_Source']}
+                                                  Only sources listed will be loaded for the specified project.
+                                                  If a project is not in the dict, all its sources are loaded.
         """
         self.results_dir = results_dir
         self.is_batch_manager = is_batch_manager
@@ -347,6 +352,7 @@ class ExperimentLoaderManager:
         self.project_names = project_names
         self.disable_unified_rooms = disable_unified_rooms
         self.skip_metrics = skip_metrics
+        self.project_source_filters = project_source_filters if project_source_filters else {}
         self.ensure_dir_exists()
         self.load_experiments()
 
@@ -673,6 +679,12 @@ class ExperimentLoaderManager:
                                 source_label = parts[0]
                                 method = parts[1]
                                 param_set = parts[2]
+
+                                # Apply project-specific source filter if defined
+                                if project_name in self.project_source_filters and \
+                                   source_label not in self.project_source_filters[project_name]:
+                                    print(f"  Skipping source '{source_label}' in '{project_name}' due to project_source_filters.")
+                                    continue # Skip this source
                                 
                                 # Store this path
                                 all_experiment_paths.append({
