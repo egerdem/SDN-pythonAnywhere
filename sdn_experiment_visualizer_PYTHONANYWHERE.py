@@ -2,15 +2,10 @@ import dash
 from dash import dcc, html, callback, Input, Output, State, dash_table
 import plotly.graph_objects as go
 import numpy as np
-# import webbrowser
-# from threading import Timer
 from sdn_experiment_manager_pythonANY import Room
-# import analysis as an
 import io
 import base64
 import soundfile as sf
-# import plot_room as pp
-# import EchoDensity as ned
 import plotly.express as px
 from scipy.signal import convolve
 import time

@@ -9,20 +9,20 @@ from sdn_manager_load_sims_pythonANY import ExperimentLoaderManager
 
 # Get the absolute path of the current directory
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-RESULTS_DIR = os.path.join(BASE_DIR, '../results')
+RESULTS_DIR = os.path.join(BASE_DIR, './results')
 
 # Initialize the manager with your specific project
-singular_manager = ExperimentLoaderManager(
+manager = ExperimentLoaderManager(
     results_dir=RESULTS_DIR,
-    is_batch_manager=False,  # Adjust based on your data structure
-    project_names=["trials_aes_4"]  # Adjust to your specific folder
+    is_batch_manager=True,  # Adjust based on your data structure
+    project_names=["aes_SINGLE", "journal_SINGLE"]  # Adjust to your specific folder
 )
 
 # Diagnostic prints for PythonAnywhere
 print(f"PYTHONANYWHERE_FLASK_APP: RESULTS_DIR = {RESULTS_DIR}")
 try:
-    print(f"PYTHONANYWHERE_FLASK_APP: singular_manager.projects = {singular_manager.projects}")
-    if not singular_manager.projects:
+    print(f"PYTHONANYWHERE_FLASK_APP: singular_manager.projects = {manager.projects}")
+    if not manager.projects:
         print("PYTHONANYWHERE_FLASK_APP: singular_manager.projects is EMPTY.")
     else:
         print("PYTHONANYWHERE_FLASK_APP: singular_manager.projects is POPULATED.")
@@ -33,7 +33,7 @@ except Exception as e:
 
 from sdn_experiment_visualizer_PYTHONANYWHERE import ExperimentVisualizer
 # Create the visualizer
-visualizer = ExperimentVisualizer(singular_manager)
+visualizer = ExperimentVisualizer(manager)
 
 # Configure the app for deployment
 app = visualizer.create_app_for_deployment()
