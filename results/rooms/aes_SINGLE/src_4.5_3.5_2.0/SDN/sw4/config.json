@@ -1,7 +1,7 @@
 {
   "method": "SDN",
-  "label": "weighted psk",
-  "info": "",
+  "label": "SW",
+  "info": "c4",
   "flags": {
     "specular_source_injection": true,
     "source_weighting": 4
@@ -12,7 +12,7 @@
     "height": 4,
     "absorption": 0.2
   },
-  "duration": 1,
+  "duration": 1.0,
   "fs": 44100,
   "source": {
     "position": [
@@ -29,7 +29,7 @@
         2,
         1.5
       ],
-      "experiment_id": "329eb0fa34"
+      "experiment_id": "2358cd52e8"
     }
   ]
 }

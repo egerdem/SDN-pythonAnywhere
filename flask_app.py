@@ -15,8 +15,8 @@ RESULTS_DIR = os.path.join(BASE_DIR, './results')
 manager = ExperimentLoaderManager(
     results_dir=RESULTS_DIR,
     is_batch_manager=True,  # Adjust based on your data structure
-    project_names=["aes_SINGLE", "journal_SINGLE", "aes_MULTI"],  # Adjust to your specific folder
-    project_source_filters={"aes_MULTI": ["Center_Source"]} # Only load Center_Source for aes_MULTI
+    project_names=["aes_SINGLE"],  # Adjust to your specific folder
+    # project_source_filters={"aes_MULTI": ["Center_Source"]} # Only load Center_Source for aes_MULTI
 )
 
 # Diagnostic prints for PythonAnywhere

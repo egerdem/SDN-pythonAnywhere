@@ -468,38 +468,37 @@ class ExperimentLoaderManager:
 
         # Determine the directory path based on manager type
         base_dir = os.path.join(self.results_dir, 'room_singulars' if not self.is_batch_manager else 'rooms')
-        if not os.path.exists(base_dir):
-            print(f"No {base_dir} directory found")
-            return
-
-        # Create project_dirs list based on project_names
+        
+        project_dirs_to_iterate = []
         if self.project_names is None:
-            # Load all projects from the directory
-            project_dirs = [d for d in os.listdir(base_dir) 
-                          if os.path.isdir(os.path.join(base_dir, d))]
-            # For singular case, filter out hidden folders and folders starting with underscore
-            if not self.is_batch_manager:
-                project_dirs = [d for d in project_dirs if not d.startswith('.') and not d.startswith('_')]
-            print(f"Loading all {len(project_dirs)} projects from {base_dir}")
+            # Auto-discover projects: Load all non-hidden, non-underscore-prefixed projects from the base_dir
+            if os.path.exists(base_dir):
+                all_potential_project_dirs = [d for d in os.listdir(base_dir)
+                                              if os.path.isdir(os.path.join(base_dir, d))]
+                # Filter out hidden folders and folders starting with underscore
+                project_dirs_to_iterate = [d for d in all_potential_project_dirs if not d.startswith('.') and not d.startswith('_')]
+                print(f"Auto-discovering projects. Found to load from {base_dir} (after filtering .*/_.*): {project_dirs_to_iterate}")
+            else:
+                print(f"Base directory {base_dir} does not exist. No projects to load.")
         elif isinstance(self.project_names, str):
-            # Load single project
-            project_dirs = [self.project_names]
+            # Load a single explicitly specified project
+            project_dirs_to_iterate = [self.project_names]
             print(f"Loading specified project: {self.project_names}")
         elif isinstance(self.project_names, list):
-            # Load multiple specified projects
-            project_dirs = self.project_names
-            print(f"Loading {len(project_dirs)} specified projects")
+            # Load multiple explicitly specified projects
+            project_dirs_to_iterate = self.project_names
+            print(f"Loading {len(project_dirs_to_iterate)} specified projects: {project_dirs_to_iterate}")
         else:
-            print("Warning: project_names should be None, a string, or a list")
-            project_dirs = []
+            print(f"Warning: project_names in ExperimentLoaderManager constructor has invalid type: {type(self.project_names)}. Expected None, str, or list.")
+            project_dirs_to_iterate = []
 
         # SINGULAR EXPERIMENTS
         if not self.is_batch_manager:
             # Singular case: Load from room_singulars with unified rooms
             unified_rooms = {} if not self.disable_unified_rooms else None  # Only create if not disabled
             
-            # Process each experiment group (subfolder)
-            for folder_name in project_dirs:
+            # Process each experiment group (subfolder in project_dirs_to_iterate)
+            for folder_name in project_dirs_to_iterate: # Iterating over potentially filtered list
                 folder_path = os.path.join(base_dir, folder_name)
                 # Skip if folder doesn't exist
                 if not os.path.isdir(folder_path):
@@ -623,11 +622,11 @@ class ExperimentLoaderManager:
         # BATCH EXPERIMENTS
         else:
             # Batch case: Load from rooms directory without unification
-            total_projects = len(project_dirs)
-            print(f"\nLoading {total_projects} projects:")
+            total_projects = len(project_dirs_to_iterate)
+            print(f"\nLoading {total_projects} batch projects based on configuration:")
             
             # Iterate through selected project directories
-            for project_idx, project_name in enumerate(project_dirs, 1):
+            for project_idx, project_name in enumerate(project_dirs_to_iterate, 1):
                 project_path = os.path.join(base_dir, project_name)
                 if not os.path.isdir(project_path):
                     print(f"Skipping non-directory or non-existent project: {project_name}")
@@ -668,9 +667,22 @@ class ExperimentLoaderManager:
                     all_experiment_paths = []
                     
                     # Walk through the project directory to find all config.json and rirs.npy files
-                    for root, dirs, files in os.walk(project_path):
+                    for root, dirs, files in os.walk(project_path, topdown=True): # Use topdown=True
+                        # Filter out directories starting with an underscore from further traversal
+                        # This applies to source, method, and param_set level directories.
+                        original_dirs_count = len(dirs)
+                        dirs[:] = [d for d in dirs if not d.startswith('_')]
+                        if len(dirs) < original_dirs_count:
+                            skipped_count = original_dirs_count - len(dirs)
+                            # Provide a more informative path for the print statement
+                            relative_root_path = os.path.relpath(root, project_path) if root != project_path else '.'
+                            print(f"  Pruned {skipped_count} underscore-prefixed subdirectories from traversal under: {project_name}/{relative_root_path}")
+
                         if 'config.json' in files and 'rirs.npy' in files:
-                            # Found a simulation set directory
+                            # Found a simulation set directory. 
+                            # Because underscore-prefixed dirs were pruned by modifying `dirs[:]`,
+                            # `root` and its path components (source, method, param_set folder)
+                            # relative to `project_path` will not start with an underscore.
                             rel_path = os.path.relpath(root, project_path)
                             parts = rel_path.split(os.sep)
                             
