@@ -1,0 +1,164 @@
+{
+  "method": "SDN",
+  "label": "SW",
+  "info": "c-1",
+  "flags": {
+    "specular_source_injection": true,
+    "source_weighting": -1
+  },
+  "position_id": "Center_Source_to_mic_16",
+  "room_parameters": {
+    "width": 9,
+    "depth": 7,
+    "height": 4,
+    "source x": 4.5,
+    "source y": 3.5,
+    "source z": 2,
+    "mic x": 4.0,
+    "mic y": 3.0,
+    "mic z": 1.5,
+    "absorption": 0.2,
+    "room_name": "aes_MULTI_grid_tr_marginbutnocentermargin",
+    "reflection": 0.8944271909999159
+  },
+  "duration": 1.0,
+  "fs": 44100,
+  "source": {
+    "position": [
+      4.5,
+      3.5,
+      2
+    ],
+    "label": "Center_Source"
+  },
+  "receivers": [
+    {
+      "position": [
+        0.5,
+        0.5,
+        1.5
+      ],
+      "experiment_id": "55a4a9c578"
+    },
+    {
+      "position": [
+        1.6666666666666667,
+        0.5,
+        1.5
+      ],
+      "experiment_id": "6846355773"
+    },
+    {
+      "position": [
+        2.8333333333333335,
+        0.5,
+        1.5
+      ],
+      "experiment_id": "c841d42e62"
+    },
+    {
+      "position": [
+        4.0,
+        0.5,
+        1.5
+      ],
+      "experiment_id": "733306248d"
+    },
+    {
+      "position": [
+        0.5,
+        1.3333333333333335,
+        1.5
+      ],
+      "experiment_id": "c7d178de15"
+    },
+    {
+      "position": [
+        1.6666666666666667,
+        1.3333333333333335,
+        1.5
+      ],
+      "experiment_id": "21556df48d"
+    },
+    {
+      "position": [
+        2.8333333333333335,
+        1.3333333333333335,
+        1.5
+      ],
+      "experiment_id": "4d82ecc5c2"
+    },
+    {
+      "position": [
+        4.0,
+        1.3333333333333335,
+        1.5
+      ],
+      "experiment_id": "bcb1aeac28"
+    },
+    {
+      "position": [
+        0.5,
+        2.166666666666667,
+        1.5
+      ],
+      "experiment_id": "1cecfc85c8"
+    },
+    {
+      "position": [
+        1.6666666666666667,
+        2.166666666666667,
+        1.5
+      ],
+      "experiment_id": "d217424b3b"
+    },
+    {
+      "position": [
+        2.8333333333333335,
+        2.166666666666667,
+        1.5
+      ],
+      "experiment_id": "bc6a590eea"
+    },
+    {
+      "position": [
+        4.0,
+        2.166666666666667,
+        1.5
+      ],
+      "experiment_id": "2b4e92f78c"
+    },
+    {
+      "position": [
+        0.5,
+        3.0,
+        1.5
+      ],
+      "experiment_id": "cfc98b4129"
+    },
+    {
+      "position": [
+        1.6666666666666667,
+        3.0,
+        1.5
+      ],
+      "experiment_id": "821343d22d"
+    },
+    {
+      "position": [
+        2.8333333333333335,
+        3.0,
+        1.5
+      ],
+      "experiment_id": "643d4d23a5"
+    },
+    {
+      "position": [
+        4.0,
+        3.0,
+        1.5
+      ],
+      "experiment_id": "81538889f6"
+    }
+  ]
+}

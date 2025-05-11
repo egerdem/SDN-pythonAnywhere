@@ -325,7 +325,7 @@ class ExperimentLoaderManager:
     """Class to manage loading and accessing acoustic simulation experiments from storage."""
     
     def __init__(self, results_dir='results', is_batch_manager=False, project_names=None, disable_unified_rooms=True, skip_metrics=False, project_source_filters=None):
-        #note: skip_metrics is not fully correct yet. due to table retrieval error. only use it if you dont need table error ui.
+
         """
         Initialize the experiment manager.
         
@@ -476,8 +476,8 @@ class ExperimentLoaderManager:
                 all_potential_project_dirs = [d for d in os.listdir(base_dir)
                                               if os.path.isdir(os.path.join(base_dir, d))]
                 # Filter out hidden folders and folders starting with underscore
-                project_dirs_to_iterate = [d for d in all_potential_project_dirs if not d.startswith('.') and not d.startswith('_')]
-                print(f"Auto-discovering projects. Found to load from {base_dir} (after filtering .*/_.*): {project_dirs_to_iterate}")
+                project_dirs_to_iterate = [d for d in all_potential_project_dirs if not d.startswith('_')]
+                print(f"Auto-discovering projects. Found to load from {base_dir} (after filtering _.*): {project_dirs_to_iterate}")
             else:
                 print(f"Base directory {base_dir} does not exist. No projects to load.")
         elif isinstance(self.project_names, str):

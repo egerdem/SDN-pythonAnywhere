@@ -148,14 +148,23 @@ class ExperimentVisualizer:
             # Calculate or get from cache
             metrics = self.calculate_metrics_for_experiment(experiment)
             return {
-                'edc': metrics['edc'],
-                'ned': metrics['ned'],
-                'time_axis': metrics['time_axis'],
-                'ned_time_axis': metrics['ned_time_axis'],
-                'edc_time_axis': metrics['edc_time_axis']
+                'edc': metrics.get('edc', np.array([])),
+                'ned': metrics.get('ned', np.array([])),
+                'time_axis': metrics.get('time_axis', np.array([])),
+                'ned_time_axis': metrics.get('ned_time_axis', np.array([])),
+                'edc_time_axis': metrics.get('edc_time_axis', np.array([]))
             }
         else:
-            # Use pre-calculated values from the experiment
+            # Rely on metrics being on the experiment object itself.
+            # If they weren't calculated during experiment's init (e.g. skip_metrics=True),
+            # or if calculation wasn't completed (e.g. empty RIR), ensure they are processed.
+            if not experiment._metrics_calculated:
+                print(f"Visualizer (get_plot_data): Exp {experiment.experiment_id} metrics not pre-calculated or incomplete. Ensuring calculation...")
+                experiment.ensure_metrics_calculated() # This populates experiment.edc, .ned, etc.
+                                                      # and sets experiment._metrics_calculated = True.
+                                                      # Handles empty RIR by setting attributes to empty arrays.
+            
+            # After ensure_metrics_calculated, attributes should exist.
             return {
                 'edc': experiment.edc,
                 'ned': experiment.ned,
@@ -1748,8 +1757,11 @@ class ExperimentVisualizer:
                         # Get signals based on comparison type
                         if comparison_type == 'edc':
                             # Calculate full EDC first
-                            sig1_full = ref_exp.edc
-                            sig2_full = exp.edc
+                            # Use get_experiment_plot_data to ensure metrics are handled correctly
+                            ref_exp_plot_data = self.get_experiment_plot_data(ref_exp)
+                            exp_plot_data = self.get_experiment_plot_data(exp)
+                            sig1_full = ref_exp_plot_data['edc']
+                            sig2_full = exp_plot_data['edc']
 
                         elif comparison_type == 'smoothed_energy':
                             # Calculate full smoothed energy once
@@ -1808,8 +1820,11 @@ class ExperimentVisualizer:
                                 # Get signals and calculate errors
                                 if comparison_type == 'edc':
                                     # Calculate full EDC first
-                                    sig1_full = pos_ref.edc
-                                    sig2_full = pos_exp.edc
+                                    # Use get_experiment_plot_data to ensure metrics are handled correctly
+                                    pos_ref_plot_data = self.get_experiment_plot_data(pos_ref)
+                                    pos_exp_plot_data = self.get_experiment_plot_data(pos_exp)
+                                    sig1_full = pos_ref_plot_data['edc']
+                                    sig2_full = pos_exp_plot_data['edc']
 
                                 elif comparison_type == 'smoothed_energy':
                                     # Calculate full smoothed energy once
