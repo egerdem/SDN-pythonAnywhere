@@ -15,7 +15,7 @@ RESULTS_DIR = os.path.join(BASE_DIR, './results')
 manager = ExperimentLoaderManager(
     results_dir=RESULTS_DIR,
     is_batch_manager=True,  # Adjust based on your data structure
-    skip_metrics=True,
+    skip_metrics=False,
     project_names=["aes_MULTI_qgrid_tr43"],  # Adjust to your specific folder
     project_source_filters={"aes_MULTI_qgrid_tr43": ["Center_Source"]} # Only load Center_Source for aes_MULTI
 )
