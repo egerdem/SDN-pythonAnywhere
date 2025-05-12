@@ -828,7 +828,7 @@ class ExperimentVisualizer:
                             ], style={'flex': '3'}),
                             # Mean error table
                             html.Div([
-                                html.H4(f'Mean {self.ERROR_METRICS[0]["label"]} (all positions)',
+                                html.H4(f'Mean {self.ERROR_METRICS[0]["label"]} (across all mic positions)',
                                         style={
                                             'textAlign': 'center',
                                             'margin': '0',

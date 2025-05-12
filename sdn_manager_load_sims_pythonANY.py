@@ -749,6 +749,7 @@ class ExperimentLoaderManager:
                                     fs=config_data.get('fs'),
                                     duration=config_data.get('duration'),
                                     experiment_id=receiver_single.get('experiment_id'),
+                                    skip_metrics=self.skip_metrics
                                 )
                                 
                                 # Add experiment to room
