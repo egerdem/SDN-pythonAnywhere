@@ -1780,8 +1780,10 @@ class ExperimentVisualizer:
                         sig2_500ms = sig2_full[:samples_500ms]
 
                         # Calculate errors for current position
-                        error_50ms = self.an.compute_RMS(sig1_50ms, sig2_50ms, Fs=ref_exp.fs, method=error_metric)
-                        error_500ms = self.an.compute_RMS(sig1_500ms, sig2_500ms, Fs=ref_exp.fs, method=error_metric)
+                        error_50ms = self.an.compute_RMS(sig1_50ms, sig2_50ms, Fs=ref_exp.fs, method=error_metric,
+                                                         skip_initial_zeros=(comparison_type == 'edc'))
+                        error_500ms = self.an.compute_RMS(sig1_500ms, sig2_500ms, Fs=ref_exp.fs, method=error_metric,
+                                                          skip_initial_zeros=(comparison_type == 'edc'))
                         row['error_50ms'] = f"{error_50ms:.6f}"
                         row['error_500ms'] = f"{error_500ms:.6f}"
                         table_data.append(row)
@@ -1845,9 +1847,11 @@ class ExperimentVisualizer:
                                 sig2_500ms = sig2_full[:samples_500ms]
 
                                 error_50ms = self.an.compute_RMS(sig1_50ms, sig2_50ms, Fs=pos_ref.fs,
-                                                                 method=error_metric)
+                                                                 method=error_metric,
+                                                                 skip_initial_zeros=(comparison_type == 'edc'))
                                 error_500ms = self.an.compute_RMS(sig1_500ms, sig2_500ms, Fs=pos_ref.fs,
-                                                                  method=error_metric)
+                                                                  method=error_metric,
+                                                                  skip_initial_zeros=(comparison_type == 'edc'))
 
                                 all_errors_50ms.append(error_50ms)
                                 all_errors_500ms.append(error_500ms)

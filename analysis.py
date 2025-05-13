@@ -356,25 +356,64 @@ def calculate_rms_envelope(signal: np.ndarray,
 
     return rms_values
 
-def compute_RMS(sig1: np.ndarray, sig2: np.ndarray, range: int = None, Fs: int = 44100, method = "rmse") -> float:
+
+def compute_RMS(sig1: np.ndarray, sig2: np.ndarray, range: int = None, Fs: int = 44100, method="rmse",
+                skip_initial_zeros: bool = False) -> float:
     """Compare two energy decay curves or smoothed RIRs and compute difference using various metrics."""
+    # Check if inputs are valid
+    if sig1 is None or sig2 is None:
+        print("WARNING: Null signal received in compute_RMS")
+        return 0.0
+
     # Calculate samples for range (e.g., 50ms)
     # only trim if range is not None
     if range is not None:
-        samples_range = int(range/1000 * Fs)  # Convert ms to samples
+        samples_range = int(range / 1000 * Fs)  # Convert ms to samples
         # print("trimming signals for error calculation"
 
-        # Trim signals to specified range
-        sig1_early = sig1[:samples_range]
-        sig2_early = sig2[:samples_range]
+        # Trim signals to specified range if length is larger than range
+        if len(sig1) > samples_range and len(sig2) > samples_range:
+            sig1_early = sig1[:samples_range]
+            sig2_early = sig2[:samples_range]
+        else:
+            # If range is larger than either signal length, trim both to the length of the shorter signal
+            min_length = min(len(sig1), len(sig2))
+            sig1_early = sig1[:min_length]
+            sig2_early = sig2[:min_length]
     else:
+        # If no range specified, ensure signals are the same length by trimming to the shorter one
+        # min_length = min(len(sig1), len(sig2))
+        # sig1_early = sig1[:min_length]
+        # sig2_early = sig2[:min_length]
         sig1_early = sig1
         sig2_early = sig2
+
+    # If skip_initial_zeros is True, find the first non-zero sample in both signals
+    if skip_initial_zeros:
+        # Get indices of non-zero samples with a small threshold
+        threshold = 1e-10
+        sig1_nonzeros = np.where(np.abs(sig1_early) > threshold)[0]
+        sig2_nonzeros = np.where(np.abs(sig2_early) > threshold)[0]
+
+        # If either signal has non-zero samples, find the earlier first non-zero sample
+        if len(sig1_nonzeros) > 0 and len(sig2_nonzeros) > 0:
+            first_nonzero = min(sig1_nonzeros[0], sig2_nonzeros[0])
+            # Trim both signals to start from the first non-zero sample
+            sig1_early = sig1_early[first_nonzero:]
+            sig2_early = sig2_early[first_nonzero:]
+        elif len(sig1_nonzeros) > 0:
+            # Only sig1 has non-zero samples
+            sig1_early = sig1_early[sig1_nonzeros[0]:]
+            sig2_early = sig2_early[sig1_nonzeros[0]:]
+        elif len(sig2_nonzeros) > 0:
+            # Only sig2 has non-zero samples
+            sig1_early = sig1_early[sig2_nonzeros[0]:]
+            sig2_early = sig2_early[sig2_nonzeros[0]:]
 
     # Calculate difference based on method
     if method == "rmse":
         # Root Mean Square Error (for linear scale)
-        diff = np.sqrt(np.mean((sig1_early - sig2_early)**2))
+        diff = np.sqrt(np.mean((sig1_early - sig2_early) ** 2))
 
     elif method == "sum":
         # Sum of absolute differences (total accumulated error)
